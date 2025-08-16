@@ -8,13 +8,13 @@ export default function ContactSection() {
     {
       icon: Mail,
       title: "Email",
-      content: "floreaivan2003@yahoo.ro",
+      content: "",
       href: "mailto:floreaivan2003@yahoo.ro"
     },
     {
       icon: Phone,
       title: "Telefon", 
-      content: "+40754452341",
+      content: "",
       href: "tel:+40754452341"
     },
     {
@@ -45,11 +45,61 @@ export default function ContactSection() {
             <div>
               <h3 className="text-2xl font-semibold mb-6">Discutăm despre tot!</h3>
               <p className="text-muted-foreground mb-8 text-white">
-                Nu-ți plac formularele? Trimite-mi un email. 👋              
-                </p>
+                Nu-ți plac formularele? Trimite-mi un email. 👋 
+              </p>
             </div>
 
-            <div className="space-y-6">
+            {/* Mobile-specific layout */}
+            <div className="sm:hidden space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                {contactInfo.slice(0, 2).map((info) => (
+                  <a
+                    key={info.title}
+                    href={info.href}
+                    className="flex flex-col items-center justify-center p-4 rounded-lg bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow-accent hover-lift group relative overflow-hidden"
+                  >
+                    <div className="flex-shrink-0 relative z-10 mb-2">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <info.icon className="w-5 h-5 text-white" />
+                      </div>
+                    </div>
+                    <div className="relative z-10 text-center">
+                      <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                        {info.title}
+                      </h4>
+                      <p className="text-muted-foreground text-sm">{info.content}</p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+              {/* Fix: use a separate variable to render the icon */}
+              {(() => {
+                const LocationIcon = contactInfo[2].icon;
+                return (
+                  <a
+                    key={contactInfo[2].title}
+                    href={contactInfo[2].href}
+                    className="flex items-center space-x-4 p-4 rounded-lg bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow-accent hover-lift group relative overflow-hidden"
+                  >
+                    <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+                    <div className="flex-shrink-0 relative z-10">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <LocationIcon className="w-6 h-6 text-white" />
+                      </div>
+                    </div>
+                    <div className="relative z-10">
+                      <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                        {contactInfo[2].title}
+                      </h4>
+                      <p className="text-muted-foreground">{contactInfo[2].content}</p>
+                    </div>
+                  </a>
+                );
+              })()}
+            </div>
+
+            {/* Desktop-specific layout */}
+            <div className="hidden sm:block space-y-6">
               {contactInfo.map((info, index) => (
                 <a
                   key={info.title}
