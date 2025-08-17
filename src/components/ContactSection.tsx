@@ -8,7 +8,7 @@ import { toast } from "sonner";
 
 export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   const contactInfo = [
     {
       icon: Mail,
@@ -18,7 +18,7 @@ export default function ContactSection() {
     },
     {
       icon: Phone,
-      title: "Telefon", 
+      title: "Telefon",
       content: "+40754452341",
       href: "tel:+40754452341"
     },
@@ -30,47 +30,52 @@ export default function ContactSection() {
     }
   ];
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const formData = new FormData(e.currentTarget);
+
+      const templateParams = {
+        from_name: `${formData.get("firstName")?.toString().trim() || ""} ${formData.get("lastName")?.toString().trim() || ""}`,
+        from_email: formData.get("email")?.toString().trim() || "",
+        subject: formData.get("subject")?.toString().trim() || "",
+        message: formData.get("message")?.toString().trim() || "",
+        to_email: "floreaivan2003@yahoo.ro",
+      };
+
+      // Validare câmpuri
+      if (!templateParams.from_name || !templateParams.from_email || !templateParams.subject || !templateParams.message) {
+        toast.error("Te rog completează toate câmpurile înainte de a trimite mesajul.");
+        setIsSubmitting(false);
+        return;
+      }
+
+      console.log("Trimitem următoarele date către EmailJS:", templateParams);
+
+      await emailjs.send(
+        "service_rey3qdj",        // ID serviciu EmailJS
+        "template_gw3hbvo",       // ID template
+        templateParams,
+        "al2dAZkEl_lFl3Bxq"       // Public Key EmailJS
+      );
+
+      toast.success("Mesajul a fost trimis cu succes!");
+      e.currentTarget.reset();
+    } catch (error) {
+      console.error("Eroare completă la trimiterea email-ului:", error);
+      toast.error("A apărut o eroare la trimiterea mesajului. Te rog încearcă din nou.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Background Pattern */}
       <div className="absolute inset-0 pattern-grid opacity-15"></div>
-      <div className="absolute inset-0"></div>
-      <div className="relative w-full flex justify-center my-20">
-        <div
-          className="h-[2px] w-full"
-          style={{
-            background:
-              "radial-gradient(ellipse at center, rgba(59,130,246,1) 70%, rgba(59,130,246,0) 100%)",
-            maskImage:
-              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-          }}
-        ></div>
-      </div>
-      <div
-        className="absolute inset-0 z-10 pointer-events-none"
-        style={{
-          backgroundImage: "url('/images/textura.png')",
-          backgroundRepeat: "repeat",
-          backgroundSize: "auto",
-          opacity: 0.25,
-        }}
-      ></div>
-
-      {/* Overlay textură sidefat */}
-      <div
-        className="absolute inset-0 z-15 pointer-events-none"
-        style={{
-          backgroundImage: "url('/images/overlay.jpg')",
-          backgroundRepeat: "repeat",
-          backgroundSize: "cover",
-          opacity: 0.05,
-        }}
-      ></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">Contactează-mă</h2>
           <div className="w-20 h-1 bg-gradient-primary rounded-full mx-auto mb-6"></div>
@@ -82,200 +87,39 @@ export default function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Info */}
           <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-semibold mb-6">Discutăm despre tot!</h3>
-              <p className="text-muted-foreground mb-8 text-white">
-                Nu-ți plac formularele? Trimite-mi un email. 👋
-              </p>
-            </div>
+            <h3 className="text-2xl font-semibold mb-6">Discutăm despre tot!</h3>
+            <p className="text-muted-foreground mb-8 text-white">Nu-ți plac formularele? Trimite-mi un email. 👋</p>
 
-            {/* Mobile-specific layout */}
-            <div className="sm:hidden space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                {contactInfo.slice(0, 2).map((info) => (
-                  <a
-                    key={info.title}
-                    href={info.href}
-                    className="flex flex-col items-center justify-center p-4 rounded-lg bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow-accent hover-lift group relative overflow-hidden"
-                  >
-                    <div className="flex-shrink-0 relative z-10 mb-2">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <info.icon className="w-5 h-5 text-white" />
-                      </div>
-                    </div>
-                    <div className="relative z-10 text-center">
-                      <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
-                        {info.title}
-                      </h4>
-                      <p className="text-muted-foreground text-sm">{info.content}</p>
-                    </div>
-                  </a>
-                ))}
-              </div>
-              {(() => {
-                const LocationIcon = contactInfo[2].icon;
-                return (
-                  <a
-                    key={contactInfo[2].title}
-                    href={contactInfo[2].href}
-                    className="flex items-center space-x-4 p-4 rounded-lg bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow-accent hover-lift group relative overflow-hidden"
-                  >
-                    <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
-                    <div className="flex-shrink-0 relative z-10">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <LocationIcon className="w-6 h-6 text-white" />
-                      </div>
-                    </div>
-                    <div className="relative z-10">
-                      <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
-                        {contactInfo[2].title}
-                      </h4>
-                      <p className="text-muted-foreground">{contactInfo[2].content}</p>
-                    </div>
-                  </a>
-                );
-              })()}
-            </div>
-
-            {/* Desktop-specific layout */}
-            <div className="hidden sm:block space-y-6">
-              {contactInfo.map((info) => (
-                <a
-                  key={info.title}
-                  href={info.href}
-                  className="flex items-center space-x-4 p-4 rounded-lg bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow-accent hover-lift group relative overflow-hidden"
-                >
-                  <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
-                  <div className="flex-shrink-0 relative z-10">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <info.icon className="w-6 h-6 text-white" />
-                    </div>
-                  </div>
-                  <div className="relative z-10">
-                    <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
-                      {info.title}
-                    </h4>
-                    <p className="text-muted-foreground">{info.content}</p>
-                  </div>
-                </a>
-              ))}
-            </div>
+            {contactInfo.map((info) => (
+              <a
+                key={info.title}
+                href={info.href}
+                className="flex items-center space-x-4 p-4 rounded-lg bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow-accent hover-lift group relative overflow-hidden"
+              >
+                <div className="w-12 h-12 rounded-lg bg-gradient-primary flex items-center justify-center">
+                  <info.icon className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground">{info.title}</h4>
+                  <p className="text-muted-foreground">{info.content}</p>
+                </div>
+              </a>
+            ))}
           </div>
 
           {/* Contact Form */}
           <div className="bg-card rounded-xl border border-border p-8 hover:border-primary/30 transition-all duration-300 relative overflow-hidden group">
-            <div className="absolute inset-0 gradient-mesh opacity-20"></div>
-            <form 
-              className="space-y-6 relative z-10" 
-              onSubmit={async (e) => {
-                e.preventDefault();
-                setIsSubmitting(true);
-
-                const formData = new FormData(e.target as HTMLFormElement);
-                const templateParams = {
-                  from_name: `${formData.get('firstName')} ${formData.get('lastName')}`,
-                  from_email: formData.get('email'),
-                  subject: formData.get('subject'),
-                  message: formData.get('message'),
-                  to_email: 'floreaivan2003@yahoo.ro'
-                };
-
-                try {
-                  await emailjs.send(
-                    'YOUR_SERVICE_ID', // Trebuie să configurezi pe emailjs.com
-                    'YOUR_TEMPLATE_ID', // Trebuie să configurezi pe emailjs.com
-                    templateParams,
-                    'YOUR_PUBLIC_KEY' // Trebuie să configurezi pe emailjs.com
-                  );
-                  toast.success('Mesajul a fost trimis cu succes!');
-                  (e.target as HTMLFormElement).reset();
-                } catch (error) {
-                  console.error('Eroare la trimiterea email-ului:', error);
-                  toast.error('A apărut o eroare la trimiterea mesajului. Te rog încearcă din nou.');
-                } finally {
-                  setIsSubmitting(false);
-                }
-              }}
-            >
+            <form className="space-y-6 relative z-10" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-2">
-                    Prenume
-                  </label>
-                  <Input 
-                    id="firstName" 
-                    name="firstName"
-                    placeholder="John" 
-                    className="bg-background border-border focus:border-primary transition-colors duration-300" 
-                    required 
-                  />
-                </div>
-                <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-foreground mb-2">
-                    Nume
-                  </label>
-                  <Input 
-                    id="lastName" 
-                    name="lastName"
-                    placeholder="Doe" 
-                    className="bg-background border-border focus:border-primary transition-colors duration-300" 
-                    required 
-                  />
-                </div>
+                <Input name="firstName" placeholder="Prenume" />
+                <Input name="lastName" placeholder="Nume" />
               </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                  Email
-                </label>
-                <Input 
-                  id="email" 
-                  name="email"
-                  type="email" 
-                  placeholder="john@example.com" 
-                  className="bg-background border-border focus:border-primary transition-colors duration-300" 
-                  required 
-                />
-              </div>
-
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
-                  Subiect
-                </label>
-                <Input 
-                  id="subject" 
-                  name="subject"
-                  placeholder="Titlul proiectului" 
-                  className="bg-background border-border focus:border-primary transition-colors duration-300" 
-                  required 
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                  Mesaj
-                </label>
-                <Textarea 
-                  id="message" 
-                  name="message"
-                  placeholder="Spune-ne despre proiectul tău..." 
-                  rows={4} 
-                  className="bg-background border-border focus:border-primary transition-colors duration-300 resize-none" 
-                  required 
-                />
-              </div>
-
-              <Button
-                type="submit"
-                size="lg"
-                disabled={isSubmitting}
-                className="w-full bg-gradient-primary hover:shadow-primary transition-all duration-300 hover-lift group relative overflow-hidden disabled:opacity-50"
-              >
-                <span className="relative z-10">
-                  {isSubmitting ? 'Se trimite...' : 'Trimite mesaj'}
-                </span>
-                <Send className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform relative z-10" />
-                <div className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100"></div>
+              <Input name="email" type="email" placeholder="Email" />
+              <Input name="subject" placeholder="Subiect" />
+              <Textarea name="message" placeholder="Mesaj" rows={4} />
+              <Button type="submit" className="w-full" disabled={isSubmitting}>
+                <Send className="w-4 h-4 mr-2" />
+                {isSubmitting ? "Se trimite..." : "Trimite"}
               </Button>
             </form>
           </div>
