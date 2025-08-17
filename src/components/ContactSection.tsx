@@ -2,8 +2,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
+import { toast } from "sonner";
 
 export default function ContactSection() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
   const contactInfo = [
     {
       icon: Mail,
@@ -160,19 +165,62 @@ export default function ContactSection() {
           {/* Contact Form */}
           <div className="bg-card rounded-xl border border-border p-8 hover:border-primary/30 transition-all duration-300 relative overflow-hidden group">
             <div className="absolute inset-0 gradient-mesh opacity-20"></div>
-            <form className="space-y-6 relative z-10" onSubmit={(e) => e.preventDefault()}>
+            <form 
+              className="space-y-6 relative z-10" 
+              onSubmit={async (e) => {
+                e.preventDefault();
+                setIsSubmitting(true);
+
+                const formData = new FormData(e.target as HTMLFormElement);
+                const templateParams = {
+                  from_name: `${formData.get('firstName')} ${formData.get('lastName')}`,
+                  from_email: formData.get('email'),
+                  subject: formData.get('subject'),
+                  message: formData.get('message'),
+                  to_email: 'floreaivan2003@yahoo.ro'
+                };
+
+                try {
+                  await emailjs.send(
+                    'YOUR_SERVICE_ID', // Trebuie să configurezi pe emailjs.com
+                    'YOUR_TEMPLATE_ID', // Trebuie să configurezi pe emailjs.com
+                    templateParams,
+                    'YOUR_PUBLIC_KEY' // Trebuie să configurezi pe emailjs.com
+                  );
+                  toast.success('Mesajul a fost trimis cu succes!');
+                  (e.target as HTMLFormElement).reset();
+                } catch (error) {
+                  console.error('Eroare la trimiterea email-ului:', error);
+                  toast.error('A apărut o eroare la trimiterea mesajului. Te rog încearcă din nou.');
+                } finally {
+                  setIsSubmitting(false);
+                }
+              }}
+            >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-2">
                     Prenume
                   </label>
-                  <Input id="firstName" placeholder="John" className="bg-background border-border focus:border-primary transition-colors duration-300" />
+                  <Input 
+                    id="firstName" 
+                    name="firstName"
+                    placeholder="John" 
+                    className="bg-background border-border focus:border-primary transition-colors duration-300" 
+                    required 
+                  />
                 </div>
                 <div>
                   <label htmlFor="lastName" className="block text-sm font-medium text-foreground mb-2">
                     Nume
                   </label>
-                  <Input id="lastName" placeholder="Doe" className="bg-background border-border focus:border-primary transition-colors duration-300" />
+                  <Input 
+                    id="lastName" 
+                    name="lastName"
+                    placeholder="Doe" 
+                    className="bg-background border-border focus:border-primary transition-colors duration-300" 
+                    required 
+                  />
                 </div>
               </div>
 
@@ -180,43 +228,52 @@ export default function ContactSection() {
                 <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
                   Email
                 </label>
-                <Input id="email" type="email" placeholder="john@example.com" className="bg-background border-border focus:border-primary transition-colors duration-300" />
+                <Input 
+                  id="email" 
+                  name="email"
+                  type="email" 
+                  placeholder="john@example.com" 
+                  className="bg-background border-border focus:border-primary transition-colors duration-300" 
+                  required 
+                />
               </div>
 
               <div>
                 <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
                   Subiect
                 </label>
-                <Input id="subject" placeholder="Titlul proiectului" className="bg-background border-border focus:border-primary transition-colors duration-300" />
+                <Input 
+                  id="subject" 
+                  name="subject"
+                  placeholder="Titlul proiectului" 
+                  className="bg-background border-border focus:border-primary transition-colors duration-300" 
+                  required 
+                />
               </div>
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
                   Mesaj
                 </label>
-                <Textarea id="message" placeholder="Spune-ne despre proiectul tău..." rows={4} className="bg-background border-border focus:border-primary transition-colors duration-300 resize-none" />
+                <Textarea 
+                  id="message" 
+                  name="message"
+                  placeholder="Spune-ne despre proiectul tău..." 
+                  rows={4} 
+                  className="bg-background border-border focus:border-primary transition-colors duration-300 resize-none" 
+                  required 
+                />
               </div>
 
               <Button
-                type="button"
+                type="submit"
                 size="lg"
-                className="w-full bg-gradient-primary hover:shadow-primary transition-all duration-300 hover-lift group relative overflow-hidden"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const firstName = (document.getElementById("firstName") as HTMLInputElement)?.value || "";
-                  const lastName = (document.getElementById("lastName") as HTMLInputElement)?.value || "";
-                  const email = (document.getElementById("email") as HTMLInputElement)?.value || "";
-                  const subject = (document.getElementById("subject") as HTMLInputElement)?.value || "";
-                  const message = (document.getElementById("message") as HTMLTextAreaElement)?.value || "";
-
-                  const mailtoLink = `mailto:floreaivan2003@yahoo.ro?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
-                    `Prenume: ${firstName}\nNume: ${lastName}\nEmail: ${email}\n\nMesaj:\n${message}`
-                  )}`;
-
-                  window.location.href = mailtoLink;
-                }}
+                disabled={isSubmitting}
+                className="w-full bg-gradient-primary hover:shadow-primary transition-all duration-300 hover-lift group relative overflow-hidden disabled:opacity-50"
               >
-                <span className="relative z-10">Trimite email</span>
+                <span className="relative z-10">
+                  {isSubmitting ? 'Se trimite...' : 'Trimite mesaj'}
+                </span>
                 <Send className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform relative z-10" />
                 <div className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100"></div>
               </Button>
