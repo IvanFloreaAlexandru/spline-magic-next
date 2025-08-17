@@ -104,20 +104,7 @@ export default function EducationSection() {
       id="education"
       className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden font-quicksand"
     >
-      {/* Linie decorativă */}
-      <div className="relative w-full flex justify-center my-20">
-        <div
-          className="h-[2px] w-full"
-          style={{
-            background:
-              "radial-gradient(ellipse at center, rgba(59,130,246,1) 70%, rgba(59,130,246,0) 100%)",
-            maskImage:
-              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-          }}
-        ></div>
-      </div>
+     
 
       {/* Overlay texturi */}
       <div

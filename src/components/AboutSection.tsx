@@ -38,118 +38,112 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 relative z-10 overflow-hidden font-quicksand">
-      {/* Background Pattern */}
-      {/* Divider fancy - glowing line */}
-<div className="relative w-full flex justify-center my-20">
-  <div
-    className="h-[2px] w-full"
-    style={{
-      background:
-        "radial-gradient(ellipse at center, rgba(59,130,246,1) 70%, rgba(59,130,246,0) 100%)",
-      maskImage:
-        "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-      WebkitMaskImage:
-        "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-    }}
-  ></div>
-</div>
+    <>
+      {/* Bara de separare ÎNAINTE de secțiune */}
+      <div className="relative w-full flex justify-center">
+        <div
+          className="h-[2px] w-full"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(59,130,246,1) 70%, rgba(59,130,246,0) 100%)",
+            maskImage:
+              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+          }}
+        ></div>
+      </div>
 
+      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 relative z-10 overflow-hidden font-quicksand">
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Titlul "About Me" */}
+          <div className="space-y-4 text-center mb-12">
+            <h2 className="text-4xl sm:text-5xl font-bold">Despre mine</h2>
 
-      <div
-        className="absolute inset-0 z-10 pointer-events-none"
-        style={{
-          backgroundImage: "url('/images/textura.png')",
-          backgroundRepeat: "repeat",
-          backgroundSize: "auto",
-          opacity: 0.25,
-        }}
-      ></div>
-
-      {/* Overlay textură sidefat */}
-      <div
-        className="absolute inset-0 z-15 pointer-events-none"
-        style={{
-          backgroundImage: "url('/images/overlay.jpg')",
-          backgroundRepeat: "repeat",
-          backgroundSize: "cover",
-          opacity: 0.05,
-        }}
-      ></div>
-
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Titlul "About Me" */}
-        <div className="space-y-4 text-center mb-12">
-          <h2 className="text-4xl sm:text-5xl font-bold">Despre mine</h2>
-
-          {/* Divider fancy */}
-          <div
-            className="mx-auto my-6 rounded-full"
-            style={{
-              width: "fit-content",
-              height: "6px",
-              background: `
-                conic-gradient(from 45deg at left, #0B486B 25%, transparent 0) 0,
-                conic-gradient(from -135deg at right, #0B486B 25%, transparent 0) 100%
-              `,
-              backgroundSize: "51% 100%",
-              backgroundRepeat: "no-repeat",
-            }}
-          ></div>
-        </div>
-
-        {/* Grila cu conținutul principal */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-stretch">
-          {/* Left Content - Card unic, mare */}
-          <div className="group p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow-accent hover-lift fade-in relative overflow-hidden space-y-4 flex flex-col justify-around">
-            {aboutPoints.map((point, index) => (
-              <div key={index} className="flex items-start space-x-4 relative z-10">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <point.icon className="w-6 h-6 text-white" />
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary underline underline-offset-4 transition-colors duration-300">
-                    {point.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground text-white">
-                    {point.description}
-                  </p>
-                </div>
-              </div>
-            ))}
+            {/* Divider fancy */}
+            <div
+              className="mx-auto my-6 rounded-full"
+              style={{
+                width: "fit-content",
+                height: "6px",
+                background: `
+                  conic-gradient(from 45deg at left, #0B486B 25%, transparent 0) 0,
+                  conic-gradient(from -135deg at right, #0B486B 25%, transparent 0) 100%
+                `,
+                backgroundSize: "51% 100%",
+                backgroundRepeat: "no-repeat",
+              }}
+            ></div>
           </div>
 
-          {/* Right Content - Skills */}
-          <div className="space-y-6">
-            {skills.map((skill, index) => (
-              <div
-                key={skill.title}
-                className="group p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow-accent hover-lift fade-in relative overflow-hidden"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
-                <div className="flex items-center space-x-4 relative z-10">
+          {/* Grila cu conținutul principal */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-stretch">
+            {/* Left Content - Card unic, mare */}
+            <div className="group p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow-accent hover-lift fade-in relative overflow-hidden space-y-4 flex flex-col justify-around">
+              {aboutPoints.map((point, index) => (
+                <div key={index} className="flex items-start space-x-4 relative z-10">
                   <div className="flex-shrink-0">
                     <div className="w-12 h-12 rounded-lg bg-gradient-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <skill.icon className="w-6 h-6 text-white" />
+                      <point.icon className="w-6 h-6 text-white" />
                     </div>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary underline underline-offset-4 transition-colors duration-300">
-                      {skill.title}
+                      {point.title}
                     </h3>
                     <p className="text-sm text-muted-foreground text-white">
-                      {skill.description}
+                      {point.description}
                     </p>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            {/* Right Content - Skills */}
+            <div className="space-y-6">
+              {skills.map((skill, index) => (
+                <div
+                  key={skill.title}
+                  className="group p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow-accent hover-lift fade-in relative overflow-hidden"
+                  style={{ animationDelay: `${index * 0.2}s` }}
+                >
+                  <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+                  <div className="flex items-center space-x-4 relative z-10">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <skill.icon className="w-6 h-6 text-white" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary underline underline-offset-4 transition-colors duration-300">
+                        {skill.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground text-white">
+                        {skill.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
+      </section>
+
+      {/* Bara de separare DUPĂ secțiune */}
+      <div className="relative w-full flex justify-center">
+        <div
+          className="h-[2px] w-full"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(59,130,246,1) 70%, rgba(59,130,246,0) 100%)",
+            maskImage:
+              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+          }}
+        ></div>
       </div>
-    </section>
+    </>
   );
 }

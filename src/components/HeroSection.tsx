@@ -18,7 +18,7 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden pb-16"
     >
       {/* Animated Background */}
       <div className="fixed inset-0 z-0 bg-gradient-to-br from-gray-900 via-black to-blue-900/20 pointer-events-none"></div>
@@ -73,15 +73,15 @@ export default function HeroSection() {
                 <span className="relative z-10 text-white">View Work</span>
                 <ArrowRight className="text-white ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform relative z-10" />
               </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="bg-transparent border border-primary text-white hover:bg-primary hover:text-white transition-all duration-300 group relative overflow-hidden"
-                  onClick={() => window.open("#", "_blank")}
-                >
-                  <Download className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform text-white" />
-                  <span>Download CV</span>
-                </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="bg-transparent border border-primary text-white hover:bg-primary hover:text-white transition-all duration-300 group relative overflow-hidden"
+                onClick={() => window.open("#", "_blank")}
+              >
+                <Download className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform text-white" />
+                <span>Download CV</span>
+              </Button>
             </div>
 
             {/* Desktop Additional Info */}
@@ -152,47 +152,49 @@ export default function HeroSection() {
                     <Linkedin className="h-5 w-5 stroke-current" />
                   </a>
 
-<Button
-  onClick={() => setOpen(true)}
-  className="flex-1 flex justify-center items-center bg-transparent hover:bg-transparent text-white transition-colors duration-300 hover:text-blue-500"
->
-  <Mail className="h-5 w-5 stroke-current transition-colors duration-300" />
-</Button>
                 </div>
 
                 <Button
-                  onClick={() => setOpen(true)}
-                  className="mt-4 w-full bg-transparent text-white border border-white font-medium py-2 px-4 rounded-xl transition-colors duration-300 hover:bg-blue-500 hover:text-white flex items-center justify-center gap-2"
-                >
-                  Let’s Talk
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
+  onClick={() =>
+    document
+      .getElementById("contact")
+      ?.scrollIntoView({ behavior: "smooth" })
+  }
+  className="mt-4 w-full bg-transparent text-white border border-white font-medium py-2 px-4 rounded-xl transition-colors duration-300 hover:bg-blue-500 hover:text-white flex items-center justify-center gap-2"
+>
+  Let's Talk
+  <ArrowRight className="h-4 w-4" />
+</Button>
+
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Mobile Additional Info */}
-          <div className="mt-8 sm:hidden flex flex-col gap-4 justify-center bg-card/30 backdrop-blur-sm border border-border rounded-2xl px-4 py-6">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-primary">5+</div>
-              <div className="text-sm text-muted-foreground text-white">
-                Ani de experiență
-              </div>
-            </div>
-            <div className="h-px w-2/3 bg-border mx-auto"></div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-primary">100+</div>
-              <div className="text-sm text-muted-foreground text-white">
-                Proiecte realizate
-              </div>
-            </div>
-            <div className="h-px w-2/3 bg-border mx-auto"></div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-primary">50+</div>
-              <div className="text-sm text-muted-foreground text-white">
-                Clienți mulțumiți
-              </div>
-            </div>
+        {/* Mobile Additional Info - Moved outside grid with extra spacing */}
+        <div className="mt-12 mb-16 sm:hidden flex flex-col justify-center bg-card/30 backdrop-blur-sm border border-border rounded-2xl px-4 py-6 space-y-4 mx-4">
+          {/* Item 1 */}
+          <div className="flex flex-col items-center">
+            <div className="text-2xl font-bold text-primary">5+</div>
+            <div className="text-sm text-muted-foreground text-white">Ani de experiență</div>
+          </div>
+
+          {/* Separator */}
+          <div className="h-px bg-border w-full"></div>
+
+          {/* Item 2 */}
+          <div className="flex flex-col items-center">
+            <div className="text-2xl font-bold text-primary">100+</div>
+            <div className="text-sm text-muted-foreground text-white">Proiecte realizate</div>
+          </div>
+
+          {/* Separator */}
+          <div className="h-px bg-border w-full"></div>
+
+          {/* Item 3 */}
+          <div className="flex flex-col items-center">
+            <div className="text-2xl font-bold text-primary">50+</div>
+            <div className="text-sm text-muted-foreground text-white">Clienți mulțumiți</div>
           </div>
         </div>
       </div>
