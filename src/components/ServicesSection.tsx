@@ -3,60 +3,106 @@ import { Button } from "@/components/ui/button";
 
 export default function ServicesSection() {
   const services = [
-  {
-    id: 1,
-    icon: <Code className="w-8 h-8" />,
-    title: "Dezvoltare Web",
-    description: "Website-uri și aplicații web personalizate, realizate cu tehnologii moderne",
-    price: "Începând de la 1.200$",
-    features: ["Design Responsive", "Framework Modern", "Optimizare SEO", "Încărcare Rapidă"]
-  },
+    {
+      id: 1,
+      icon: <Code className="w-8 h-8" />,
+      title: "Dezvoltare Web",
+      description: "Website-uri și aplicații web personalizate, realizate cu tehnologii moderne",
+      price: "Începând de la 1.200$",
+      features: ["Design Responsive", "Framework Modern", "Optimizare SEO", "Încărcare Rapidă"]
+    },
+    {
+      id: 2,
+      icon: <Palette className="w-8 h-8" />,
+      title: "Design UI/UX",
+      description: "Interfețe frumoase și intuitive care îmbunătățesc experiența utilizatorului",
+      price: "Începând de la 800$",
+      features: ["Cercetare Utilizatori", "Wireframing", "Prototipare", "Sistem de Design"]
+    },
+    {
+      id: 3,
+      icon: <Globe className="w-8 h-8" />,
+      title: "Soluții E-commerce",
+      description: "Magazine online complete cu integrare plăți și gestionare stocuri",
+      price: "Începând de la 2.000$",
+      features: ["Gateway de Plăți", "Sistem de Inventar", "Panou Administrativ", "Analize și Statistici"]
+    },
+    {
+      id: 4,
+      icon: <Database className="w-8 h-8" />,
+      title: "Dezvoltare Backend",
+      description: "API-uri robuste și soluții server-side pentru aplicațiile tale",
+      price: "Începând de la 1.500$",
+      features: ["REST API-uri", "Design Baze de Date", "Autentificare", "Hosting în Cloud"]
+    },
+    {
+      id: 5,
+      icon: <Zap className="w-8 h-8" />,
+      title: "Optimizare Performanță",
+      description: "Crește viteza website-urilor și aplicațiilor existente",
+      price: "Începând de la 600$",
+      features: ["Analiză Viteză", "Optimizare Cod", "Îmbunătățire SEO", "Monitorizare Performanță"]
+    }
+  ];
 
-  {
-    id: 2,
-    icon: <Palette className="w-8 h-8" />,
-    title: "Design UI/UX",
-    description: "Interfețe frumoase și intuitive care îmbunătățesc experiența utilizatorului",
-    price: "Începând de la 800$",
-    features: ["Cercetare Utilizatori", "Wireframing", "Prototipare", "Sistem de Design"]
-  },
+  const openEmail = (serviceTitle) => {
+    const email = "floreaivan2003@yahoo.ro";
+    const subject = encodeURIComponent(`Solicitare oferta: ${serviceTitle}`);
+    const body = encodeURIComponent(`Salut, as dori mai multe detalii despre oferta: ${serviceTitle}.`);
 
-  {
-    id: 3,
-    icon: <Globe className="w-8 h-8" />,
-    title: "Soluții E-commerce",
-    description: "Magazine online complete cu integrare plăți și gestionare stocuri",
-    price: "Începând de la 2.000$",
-    features: ["Gateway de Plăți", "Sistem de Inventar", "Panou Administrativ", "Analize și Statistici"]
-  },
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-  {
-    id: 4,
-    icon: <Database className="w-8 h-8" />,
-    title: "Dezvoltare Backend",
-    description: "API-uri robuste și soluții server-side pentru aplicațiile tale",
-    price: "Începând de la 1.500$",
-    features: ["REST API-uri", "Design Baze de Date", "Autentificare", "Hosting în Cloud"]
-  },
-
-  {
-    id: 5,
-    icon: <Zap className="w-8 h-8" />,
-    title: "Optimizare Performanță",
-    description: "Crește viteza website-urilor și aplicațiilor existente",
-    price: "Începând de la 600$",
-    features: ["Analiză Viteză", "Optimizare Cod", "Îmbunătățire SEO", "Monitorizare Performanță"]
-  }
-];
+    if (isMobile) {
+      // Pe mobil se deschide aplicația implicită de email
+      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    } else {
+      // Pe desktop deschide Gmail sau Yahoo în browser
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
+      const yahooUrl = `https://compose.mail.yahoo.com/?to=${email}&subject=${subject}&body=${body}`;
+      // Deschide Gmail într-o filă nouă
+      window.open(gmailUrl, "_blank") || window.open(yahooUrl, "_blank");
+    }
+  };
 
   return (
     <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Background Pattern */}
+      {/* Background și overlay-uri */}
       <div className="absolute inset-0 pattern-grid opacity-5"></div>
+      <div className="relative w-full flex justify-center my-20">
+        <div
+          className="h-[2px] w-full"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(59,130,246,1) 70%, rgba(59,130,246,0) 100%)",
+            maskImage:
+              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+          }}
+        ></div>
+      </div>
       <div className="absolute inset-0"></div>
-      
+      <div
+        className="absolute inset-0 z-10 pointer-events-none"
+        style={{
+          backgroundImage: "url('/images/textura.png')",
+          backgroundRepeat: "repeat",
+          backgroundSize: "auto",
+          opacity: 0.25,
+        }}
+      ></div>
+      <div
+        className="absolute inset-0 z-15 pointer-events-none"
+        style={{
+          backgroundImage: "url('/images/overlay.jpg')",
+          backgroundRepeat: "repeat",
+          backgroundSize: "cover",
+          opacity: 0.05,
+        }}
+      ></div>
+
+      {/* Header */}
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">Servicii oferite</h2>
           <div className="w-20 h-1 bg-gradient-primary rounded-full mx-auto mb-6"></div>
@@ -102,13 +148,14 @@ export default function ServicesSection() {
                   ))}
                 </ul>
 
-                {/* Price */}
+                {/* Price și buton email */}
                 <div className="flex items-center justify-between">
                   <span className="text-lg font-semibold text-white">{service.price}</span>
                   <Button 
                     size="sm" 
                     variant="outline"
                     className="border-primary/20 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover-lift"
+                    onClick={() => openEmail(service.title)}
                   >
                     Solicită oferta
                   </Button>
@@ -126,14 +173,16 @@ export default function ServicesSection() {
           <div className="bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 rounded-2xl p-8 backdrop-blur-sm border border-border">
             <h3 className="text-2xl font-bold mb-4">Ai nevoie de o soluție personalizată?</h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Fiecare proiect este unic. Hai să discutăm cerințele tale specifice și să creăm o soluție personalizată care să se potrivească perfect nevoilor tale.            </p>
-            <Button 
-              size="lg" 
-              className="bg-primary hover:bg-primary/90 transition-all duration-300 hover-lift relative overflow-hidden group"
-            >
-              <span className="relative z-10">Demarează proiectul</span>
-              <div className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100"></div>
-            </Button>
+              Fiecare proiect este unic. Hai să discutăm cerințele tale specifice și să creăm o soluție personalizată care să se potrivească perfect nevoilor tale.
+            </p>
+              <Button 
+                size="lg" 
+                className="bg-primary hover:bg-primary/90 transition-all duration-300 hover-lift relative overflow-hidden group"
+                onClick={() => openEmail("Demarare proiect")}
+              >
+                <span className="relative z-10">Demarează proiectul</span>
+                <div className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100"></div>
+              </Button>
           </div>
         </div>
       </div>

@@ -38,22 +38,68 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-card/50 relative overflow-hidden font-quicksand">
+    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 relative z-10 overflow-hidden font-quicksand">
       {/* Background Pattern */}
-      <div className="absolute inset-0 pattern-grid opacity-20"></div>
-      <div className="absolute inset-0"></div>
-      
+      {/* Divider fancy - glowing line */}
+<div className="relative w-full flex justify-center my-20">
+  <div
+    className="h-[2px] w-full"
+    style={{
+      background:
+        "radial-gradient(ellipse at center, rgba(59,130,246,1) 70%, rgba(59,130,246,0) 100%)",
+      maskImage:
+        "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+      WebkitMaskImage:
+        "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+    }}
+  ></div>
+</div>
+
+
+      <div
+        className="absolute inset-0 z-10 pointer-events-none"
+        style={{
+          backgroundImage: "url('/images/textura.png')",
+          backgroundRepeat: "repeat",
+          backgroundSize: "auto",
+          opacity: 0.25,
+        }}
+      ></div>
+
+      {/* Overlay textură sidefat */}
+      <div
+        className="absolute inset-0 z-15 pointer-events-none"
+        style={{
+          backgroundImage: "url('/images/overlay.jpg')",
+          backgroundRepeat: "repeat",
+          backgroundSize: "cover",
+          opacity: 0.05,
+        }}
+      ></div>
+
       <div className="max-w-7xl mx-auto relative z-10">
-        
         {/* Titlul "About Me" */}
         <div className="space-y-4 text-center mb-12">
           <h2 className="text-4xl sm:text-5xl font-bold">Despre mine</h2>
-          <div className="w-20 h-1 bg-gradient-primary rounded-full mx-auto"></div>
+
+          {/* Divider fancy */}
+          <div
+            className="mx-auto my-6 rounded-full"
+            style={{
+              width: "fit-content",
+              height: "6px",
+              background: `
+                conic-gradient(from 45deg at left, #0B486B 25%, transparent 0) 0,
+                conic-gradient(from -135deg at right, #0B486B 25%, transparent 0) 100%
+              `,
+              backgroundSize: "51% 100%",
+              backgroundRepeat: "no-repeat",
+            }}
+          ></div>
         </div>
-        
+
         {/* Grila cu conținutul principal */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-stretch">
-          
           {/* Left Content - Card unic, mare */}
           <div className="group p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow-accent hover-lift fade-in relative overflow-hidden space-y-4 flex flex-col justify-around">
             {aboutPoints.map((point, index) => (
