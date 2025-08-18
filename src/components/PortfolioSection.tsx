@@ -1,8 +1,10 @@
-import React from "react";
-import { ExternalLink, Github, Globe, ArrowRight } from "lucide-react";
+import React, { useState } from "react";
+import { ExternalLink, Github, Globe, ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function PortfolioSection() {
+  const [showAll, setShowAll] = useState(false);
+  
   const projects = [
     {
       id: 1,
@@ -66,8 +68,8 @@ export default function PortfolioSection() {
     }
   ];
 
-  const featuredProjects = projects.filter(project => project.featured);
-  const otherProjects = projects.filter(project => !project.featured);
+  const displayedProjects = showAll ? projects : projects.slice(0, 4);
+  const shouldShowToggle = projects.length > 4;
 
   return (
     <>
@@ -101,17 +103,17 @@ export default function PortfolioSection() {
             </p>
           </div>
 
-          {/* Featured Projects */}
-          <div className="mb-16">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {featuredProjects.map((project, index) => (
+          {/* Projects Grid */}
+          <div className="mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+              {displayedProjects.map((project, index) => (
                 <div
                   key={project.id}
                   className="group relative bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 overflow-hidden"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {/* Project Image */}
-                  <div className="relative h-64 overflow-hidden">
+                  <div className="relative h-48 md:h-64 overflow-hidden">
                     <img
                       src={project.image}
                       alt={project.title}
@@ -142,8 +144,8 @@ export default function PortfolioSection() {
                   </div>
 
                   {/* Project Content */}
-                  <div className="p-6">
-                    <h4 className="text-xl font-semibold mb-2 text-white group-hover:text-blue-400 transition-colors duration-300">
+                  <div className="p-4 md:p-6">
+                    <h4 className="text-lg md:text-xl font-semibold mb-2 text-white group-hover:text-blue-400 transition-colors duration-300">
                       {project.title}
                     </h4>
                     <p className="text-gray-300 mb-4 text-sm leading-relaxed">
@@ -155,23 +157,23 @@ export default function PortfolioSection() {
                       {project.tech.map((tech, idx) => (
                         <span
                           key={idx}
-                          className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs border border-blue-500/30"
+                          className="px-2 md:px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs border border-blue-500/30"
                         >
                           {tech}
                         </span>
-                      ))
-                      }
+                      ))}
                     </div>
 
                     {/* Links */}
                     <div className="flex gap-3">
                       <Button
                         size="sm"
-                        className="bg-transparent border border-blue-500/20 text-blue-400 hover:bg-blue-500 hover:text-white transition-all duration-300"
+                        className="bg-transparent border border-blue-500/20 text-blue-400 hover:bg-blue-500 hover:text-white transition-all duration-300 flex-1 md:flex-none"
                         onClick={() => window.open(project.liveUrl, '_blank')}
                       >
                         <ExternalLink className="w-4 h-4 mr-2" />
-                        Vezi proiectul
+                        <span className="hidden sm:inline">Vezi proiectul</span>
+                        <span className="sm:hidden">Vezi</span>
                       </Button>
                       <Button
                         size="sm"
@@ -187,10 +189,31 @@ export default function PortfolioSection() {
                   {/* Hover Effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"></div>
                 </div>
-              ))
-              }
+              ))}
             </div>
           </div>
+
+          {/* Toggle Button */}
+          {shouldShowToggle && (
+            <div className="text-center">
+              <Button
+                onClick={() => setShowAll(!showAll)}
+                className="bg-blue-500/20 border border-blue-500/30 text-blue-300 hover:bg-blue-500 hover:text-white transition-all duration-300 px-6 py-2"
+              >
+                {showAll ? (
+                  <>
+                    <ChevronUp className="w-4 h-4 mr-2" />
+                    Afișează mai puțin
+                  </>
+                ) : (
+                  <>
+                    <ChevronDown className="w-4 h-4 mr-2" />
+                    Vezi toate proiectele
+                  </>
+                )}
+              </Button>
+            </div>
+          )}
 
         </div>
       </section>

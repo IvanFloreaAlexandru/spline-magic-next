@@ -52,6 +52,7 @@ export default function ContactSection() {
 
       console.log("Trimitem următoarele date către EmailJS:", templateParams);
 
+      // Send main email
       await Promise.race([
         emailjs.send(
           "service_pd8uldq",
@@ -64,7 +65,38 @@ export default function ContactSection() {
         )
       ]);
 
-      toast.success("Mesajul a fost trimis cu succes! Îți voi răspunde în curând.");
+      // Send auto-reply email
+      const autoReplyParams = {
+        to_email: templateParams.from_email,
+        to_name: templateParams.from_name,
+        from_name: "Ivan Florea",
+        message: `Bună ${templateParams.from_name}!
+
+Mulțumesc pentru mesajul tău! Am primit solicitarea ta și îți voi răspunde în cel mai scurt timp posibil.
+
+Detaliile mesajului tău:
+- Subiect: ${templateParams.subject}
+- Email: ${templateParams.from_email}
+
+Să ai o zi frumoasă!
+
+Cu drag,
+Ivan Florea
+Web Developer`
+      };
+
+      try {
+        await emailjs.send(
+          "service_pd8uldq",
+          "template_autoreply",
+          autoReplyParams,
+          "al2dAZkEl_lFl3Bxq"
+        );
+      } catch (autoReplyError) {
+        console.log("Auto-reply failed but main email sent:", autoReplyError);
+      }
+
+      toast.success("Mesajul a fost trimis cu succes! Ai primit și un email de confirmare.");
 
       // Resetăm formularul în siguranță
       formRef.current.reset();
