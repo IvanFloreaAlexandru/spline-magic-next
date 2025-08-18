@@ -5,6 +5,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prevent text selection and image dragging for non-interactive elements */
+*:not(input):not(textarea):not([contenteditable]):not(button):not(a):not([role="button"]) {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+img:not([draggable="true"]) {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  pointer-events: none;
+}
+
+/* Allow text selection for specific interactive elements */
+input, textarea, [contenteditable], .text-selectable {
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */

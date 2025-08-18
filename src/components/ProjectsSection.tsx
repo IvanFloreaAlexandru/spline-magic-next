@@ -207,8 +207,8 @@ export default function ServicesSection() {
         {/* Header */}
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">Servicii oferite</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto mb-6"></div>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">Servicii oferite</h2>
+            <div className="w-20 h-1 bg-gradient-primary rounded-full mx-auto mb-6"></div>
             <p className="text-gray-300 text-lg max-w-2xl mx-auto">
               Ofer soluții digitale complete pentru a transforma ideile tale în realitate, folosind tehnologie de ultimă generație și design modern.
             </p>

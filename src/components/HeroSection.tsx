@@ -53,7 +53,7 @@ export default function HeroSection() {
             <div className="space-y-4">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold">
                 Salut, sunt{" "}
-                <span className="bg-blue-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-primary bg-clip-text text-transparent">
                   Florea
                 </span>
               </h1>

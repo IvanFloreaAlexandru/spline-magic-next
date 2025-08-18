@@ -96,8 +96,8 @@ export default function PortfolioSection() {
         {/* Header */}
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-white">Portofoliu</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto mb-6"></div>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">Portofoliu</h2>
+            <div className="w-20 h-1 bg-gradient-primary rounded-full mx-auto mb-6"></div>
             <p className="text-gray-300 text-lg max-w-2xl mx-auto">
               Iată câteva dintre proiectele mele recente care demonstrează abilitățile și creativitatea mea în dezvoltarea web.
             </p>

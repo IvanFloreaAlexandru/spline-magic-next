@@ -150,7 +150,7 @@ Web Developer`
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">Contactează-mă</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">Contactează-mă</h2>
             <div className="w-20 h-1 bg-gradient-primary rounded-full mx-auto mb-6"></div>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto text-white">
               Ai un proiect în minte? Hai să discutăm cum putem colabora pentru a transforma ideile tale în realitate.

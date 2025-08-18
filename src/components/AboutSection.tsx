@@ -58,22 +58,11 @@ export default function AboutSection() {
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Titlul "About Me" */}
           <div className="space-y-4 text-center mb-12">
-            <h2 className="text-4xl sm:text-5xl font-bold">Despre mine</h2>
-
-            {/* Divider fancy */}
-            <div
-              className="mx-auto my-6 rounded-full"
-              style={{
-                width: "fit-content",
-                height: "6px",
-                background: `
-                  conic-gradient(from 45deg at left, #0B486B 25%, transparent 0) 0,
-                  conic-gradient(from -135deg at right, #0B486B 25%, transparent 0) 100%
-                `,
-                backgroundSize: "51% 100%",
-                backgroundRepeat: "no-repeat",
-              }}
-            ></div>
+            <h2 className="text-4xl sm:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent">Despre mine</h2>
+            <div className="w-20 h-1 bg-gradient-primary rounded-full mx-auto"></div>
+            <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+              Descoperă cine sunt și care sunt abilitățile mele
+            </p>
           </div>
 
           {/* Grila cu conținutul principal */}
