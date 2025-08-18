@@ -19,50 +19,48 @@ export default function ServicesSection() {
   const formRef = useRef<HTMLDivElement>(null);
 
   const services = [
-      {
-      id: 1,
-      icon: <Globe className="w-8 h-8" />,
-      title: "Soluții E-commerce",
-      description: "Magazine online complete cu integrare plăți și gestionare stocuri",
-      price: "Începând de la 400$",
-      features: ["Gateway de Plăți", "Sistem de Inventar", "Panou Administrativ", "Analize și Statistici"]
-    },
+  {
+    id: 1,
+    icon: <Globe className="w-8 h-8" />,
+    title: "Soluții E-commerce",
+    description: "Magazine online complete cu integrare plăți și gestionare stocuri",
+    price: "Începând de la 400$",
+    features: ["Gateway de Plăți", "Sistem de Inventar", "Panou Administrativ", "Analize și Statistici"]
+  },
+  {
+    id: 2,
+    icon: <Code className="w-8 h-8" />,
+    title: "Dezvoltare Web",
+    description: "Website-uri și aplicații web personalizate, realizate cu tehnologii moderne",
+    price: "Începând de la 150$",
+    features: ["Design adaptabil", "Framework Modern", "Securizare", "Încărcare Rapidă"]
+  },
+  {
+    id: 3,
+    icon: <Database className="w-8 h-8" />,
+    title: "Dezvoltare Backend",
+    description: "API-uri robuste și soluții server-side pentru aplicațiile tale",
+    price: "Începând de la 150$",
+    features: ["REST API-uri", "Design Baze de Date", "Autentificare", "Hosting în Cloud"]
+  },
+  {
+    id: 4,
+    icon: <Zap className="w-8 h-8" />,
+    title: "Optimizare Performanță",
+    description: "Crește viteza website-urilor și aplicațiilor existente",
+    price: "Începând de la 100$",
+    features: ["Analiză Viteză", "Îmbunătățire SEO", "Monitorizare Performanță"]
+  },
+  {
+    id: 5,
+    icon: <Palette className="w-8 h-8" />,
+    title: "Design UI/UX",
+    description: "Interfețe frumoase și intuitive care îmbunătățesc experiența utilizatorului",
+    price: "Începând de la 100$",
+    features: ["Interfață intuitivă", "Testare UX", "Design adaptabil"]
+  }
+];
 
-
-    {
-      id: 2,
-      icon: <Code className="w-8 h-8" />,
-      title: "Dezvoltare Web",
-      description: "Website-uri și aplicații web personalizate, realizate cu tehnologii moderne",
-      price: "Începând de la 150$",
-      features: ["Design adaptabil", "Framework Modern", "Securizare", "Încărcare Rapidă"]
-    },
-    {
-      id: 3,
-      icon: <Database className="w-8 h-8" />,
-      title: "Dezvoltare Backend",
-      description: "API-uri robuste și soluții server-side pentru aplicațiile tale",
-      price: "Începând de la 150$",
-      features: ["REST API-uri", "Design Baze de Date", "Autentificare", "Hosting în Cloud"]
-    },
-    {
-      id: 4,
-      icon: <Zap className="w-8 h-8" />,
-      title: "Optimizare Performanță",
-      description: "Crește viteza website-urilor și aplicațiilor existente",
-      price: "Începând de la 100$",
-      features: ["Analiză Viteză", "Îmbunătățire SEO", "Monitorizare Performanță"]
-    },
-    
-    {
-      id: 5,
-      icon: <Palette className="w-8 h-8" />,
-      title: "Design UI/UX",
-      description: "Interfețe frumoase și intuitive care îmbunătățesc experiența utilizatorului",
-      price: "Începând de la 100$",
-      features: ["Interfață intuitivă", "Testare UX", "Design adaptabil"]
-    }
-  ];
 
   const openContactModal = (serviceTitle, servicePrice = "") => {
     let message = "";

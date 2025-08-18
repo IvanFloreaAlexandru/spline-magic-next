@@ -37,8 +37,8 @@ export default function Navbar() {
       },
       {
         root: null,
-        rootMargin: "0px",
-        threshold: 0.3,
+    rootMargin: "-50% 0px -50% 0px", // va activa highlight-ul când secțiunea e aproape în centru
+        threshold: 0,
       }
     );
 
