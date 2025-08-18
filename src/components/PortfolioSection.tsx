@@ -1,0 +1,330 @@
+import React from "react";
+import { ExternalLink, Github, Globe, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+export default function PortfolioSection() {
+  const projects = [
+    {
+      id: 1,
+      title: "E-commerce Platform",
+      description: "Platformă de comerț electronic completă cu sistem de plăți integrat și management de produse.",
+      image: "/images/profil.jpg", // Placeholder - poți înlocui cu imagini reale
+      tech: ["React", "Node.js", "MongoDB", "Stripe"],
+      liveUrl: "#",
+      githubUrl: "#",
+      featured: true
+    },
+    {
+      id: 2,
+      title: "Travel Booking App",
+      description: "Aplicație de rezervări pentru călătorii cu integrare Google Maps și sistem de recenzii.",
+      image: "/images/profil.jpg",
+      tech: ["Vue.js", "Express", "PostgreSQL", "Maps API"],
+      liveUrl: "#",
+      githubUrl: "#",
+      featured: true
+    },
+    {
+      id: 3,
+      title: "Portfolio Website",
+      description: "Site web personal responsive cu animații și design modern pentru un artist.",
+      image: "/images/profil.jpg",
+      tech: ["HTML5", "CSS3", "JavaScript", "GSAP"],
+      liveUrl: "#",
+      githubUrl: "#",
+      featured: false
+    },
+    {
+      id: 4,
+      title: "Task Management Tool",
+      description: "Instrument de management pentru echipe cu funcții de colaborare în timp real.",
+      image: "/images/profil.jpg",
+      tech: ["React", "Firebase", "Material-UI", "Socket.io"],
+      liveUrl: "#",
+      githubUrl: "#",
+      featured: false
+    },
+    {
+      id: 5,
+      title: "Restaurant App",
+      description: "Aplicație pentru restaurante cu meniu digital și sistem de comenzi online.",
+      image: "/images/profil.jpg",
+      tech: ["React Native", "Node.js", "MongoDB", "Expo"],
+      liveUrl: "#",
+      githubUrl: "#",
+      featured: false
+    },
+    {
+      id: 6,
+      title: "Learning Platform",
+      description: "Platformă de învățare online cu progres tracking și quizuri interactive.",
+      image: "/images/profil.jpg",
+      tech: ["Next.js", "Prisma", "NextAuth", "Tailwind"],
+      liveUrl: "#",
+      githubUrl: "#",
+      featured: false
+    }
+  ];
+
+  const featuredProjects = projects.filter(project => project.featured);
+  const otherProjects = projects.filter(project => !project.featured);
+
+  return (
+    <>
+      {/* Bara de separare ÎNAINTE de secțiune */}
+      <div className="relative w-full flex justify-center">
+        <div
+          className="h-[2px] w-full"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(59,130,246,1) 70%, rgba(59,130,246,0) 100%)",
+            maskImage:
+              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+          }}
+        ></div>
+      </div>
+
+      <section id="portfolio" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Background și overlay-uri */}
+        <div className="absolute inset-0 pattern-grid opacity-5"></div>
+        <div className="absolute inset-0"></div>
+        <div
+          className="absolute inset-0 z-10 pointer-events-none"
+          style={{
+            backgroundImage: "url('/images/textura.png')",
+            backgroundRepeat: "repeat",
+            backgroundSize: "auto",
+            opacity: 0.25,
+          }}
+        ></div>
+        <div
+          className="absolute inset-0 z-15 pointer-events-none"
+          style={{
+            backgroundImage: "url('/images/overlay.jpg')",
+            backgroundRepeat: "repeat",
+            backgroundSize: "cover",
+            opacity: 0.05,
+          }}
+        ></div>
+
+        {/* Header */}
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-white">Portofoliu</h2>
+            <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto mb-6"></div>
+            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+              Iată câteva dintre proiectele mele recente care demonstrează abilitățile și creativitatea mea în dezvoltarea web.
+            </p>
+          </div>
+
+          {/* Featured Projects */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-semibold mb-8 text-white">Proiecte principale</h3>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {featuredProjects.map((project, index) => (
+                <div
+                  key={project.id}
+                  className="group relative bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 overflow-hidden"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  {/* Project Image */}
+                  <div className="relative h-64 overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60"></div>
+                    
+                    {/* Overlay buttons */}
+                    <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                      <Button
+                        size="sm"
+                        className="bg-blue-500 hover:bg-blue-600 text-white"
+                        onClick={() => window.open(project.liveUrl, '_blank')}
+                      >
+                        <Globe className="w-4 h-4 mr-2" />
+                        Live Demo
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="border-white text-white hover:bg-white hover:text-black"
+                        onClick={() => window.open(project.githubUrl, '_blank')}
+                      >
+                        <Github className="w-4 h-4 mr-2" />
+                        GitHub
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* Project Content */}
+                  <div className="p-6">
+                    <h4 className="text-xl font-semibold mb-2 text-white group-hover:text-blue-400 transition-colors duration-300">
+                      {project.title}
+                    </h4>
+                    <p className="text-gray-300 mb-4 text-sm leading-relaxed">
+                      {project.description}
+                    </p>
+
+                    {/* Technologies */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tech.map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs border border-blue-500/30"
+                        >
+                          {tech}
+                        </span>
+                      ))
+                      }
+                    </div>
+
+                    {/* Links */}
+                    <div className="flex gap-3">
+                      <Button
+                        size="sm"
+                        className="bg-transparent border border-blue-500/20 text-blue-400 hover:bg-blue-500 hover:text-white transition-all duration-300"
+                        onClick={() => window.open(project.liveUrl, '_blank')}
+                      >
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Vezi proiectul
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="text-gray-400 hover:text-white"
+                        onClick={() => window.open(project.githubUrl, '_blank')}
+                      >
+                        <Github className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* Hover Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"></div>
+                </div>
+              ))
+              }
+            </div>
+          </div>
+
+          {/* Other Projects */}
+          <div>
+            <h3 className="text-2xl font-semibold mb-8 text-white">Alte proiecte</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {otherProjects.map((project, index) => (
+                <div
+                  key={project.id}
+                  className="group relative bg-gray-800/50 backdrop-blur-sm rounded-lg border border-gray-700 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 hover:-translate-y-1 overflow-hidden"
+                  style={{ animationDelay: `${(index + featuredProjects.length) * 0.1}s` }}
+                >
+                  {/* Project Image */}
+                  <div className="relative h-40 overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-40"></div>
+                  </div>
+
+                  {/* Project Content */}
+                  <div className="p-4">
+                    <h4 className="text-lg font-semibold mb-2 text-white group-hover:text-blue-400 transition-colors duration-300">
+                      {project.title}
+                    </h4>
+                    <p className="text-gray-300 mb-3 text-sm leading-relaxed line-clamp-2">
+                      {project.description}
+                    </p>
+
+                    {/* Technologies */}
+                    <div className="flex flex-wrap gap-1 mb-3">
+                      {project.tech.slice(0, 3).map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded text-xs border border-blue-500/30"
+                        >
+                          {tech}
+                        </span>
+                      ))
+                      }
+                      {project.tech.length > 3 && (
+                        <span className="px-2 py-1 text-gray-400 text-xs">
+                          +{project.tech.length - 3}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Links */}
+                    <div className="flex justify-between items-center">
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="text-blue-400 hover:text-blue-300 p-0 h-auto"
+                        onClick={() => window.open(project.liveUrl, '_blank')}
+                      >
+                        Vezi proiectul
+                        <ArrowRight className="w-4 h-4 ml-1" />
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="text-gray-400 hover:text-white p-2"
+                        onClick={() => window.open(project.githubUrl, '_blank')}
+                      >
+                        <Github className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* Hover Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/3 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"></div>
+                </div>
+              ))
+              }
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div className="text-center mt-16">
+            <div className="bg-gradient-to-r from-blue-500/10 via-purple-600/10 to-blue-500/10 rounded-2xl p-8 backdrop-blur-sm border border-gray-700">
+              <h3 className="text-2xl font-bold mb-4 text-white">Vrei să vezi mai multe?</h3>
+              <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+                Acestea sunt doar câteva exemple din portofoliul meu. Dacă vrei să vezi mai multe proiecte sau să discutăm despre o colaborare, contactează-mă!
+              </p>
+              <Button 
+                size="lg" 
+                className="bg-blue-500 hover:bg-blue-600 transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group text-white"
+                onClick={() => {
+                  const contactSection = document.getElementById('contact');
+                  contactSection?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                <span className="relative z-10">Să colaborăm</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Bara de separare DUPĂ secțiune */}
+      <div className="relative w-full flex justify-center">
+        <div
+          className="h-[2px] w-full"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(59,130,246,1) 70%, rgba(59,130,246,0) 100%)",
+            maskImage:
+              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+          }}
+        ></div>
+      </div>
+    </>
+  );
+}

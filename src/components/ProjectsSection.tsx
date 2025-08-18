@@ -1,7 +1,8 @@
 import React, { useState, useRef } from "react";
 import { Code, Palette, Smartphone, Globe, Database, Zap, X, Send, CheckCircle, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import emailjs from "@emailjs/browser"; // ✅ Import-ul real în loc de mock
+import emailjs from "@emailjs/browser";
+import { toast } from "@/hooks/use-toast";
 
 export default function ServicesSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -86,11 +87,13 @@ export default function ServicesSection() {
   const showError = (message: string) => {
     setErrorMessage(message);
     setShowErrorPopup(true);
+    toast({ description: message, variant: "destructive" });
     setTimeout(() => setShowErrorPopup(false), 5000);
   };
 
   const showSuccess = () => {
     setShowSuccessPopup(true);
+    toast({ description: "Mesaj trimis cu succes! Îți voi răspunde în curând." });
     setTimeout(() => setShowSuccessPopup(false), 4000);
   };
 
