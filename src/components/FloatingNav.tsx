@@ -8,13 +8,13 @@ export default function FloatingNav() {
           <div className="gradient-text font-bold text-lg">3D Portfolio</div>
           <div className="flex space-x-4">
             <Button variant="ghost" size="sm" className="hover:bg-accent/20">
-              Home
+              Acasă
             </Button>
             <Button variant="ghost" size="sm" className="hover:bg-accent/20">
-              About
+              Despre
             </Button>
             <Button variant="ghost" size="sm" className="hover:bg-accent/20">
-              Projects
+              Proiecte
             </Button>
             <Button variant="ghost" size="sm" className="hover:bg-accent/20">
               Contact

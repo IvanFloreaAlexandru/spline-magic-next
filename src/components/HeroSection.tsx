@@ -52,7 +52,7 @@ export default function HeroSection() {
           <div className="space-y-8 text-center lg:text-left">
             <div className="space-y-4">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold">
-                Hi, I'm{" "}
+                Salut, sunt{" "}
                 <span className="bg-blue-600 bg-clip-text text-transparent">
                   Florea
                 </span>
@@ -70,7 +70,7 @@ export default function HeroSection() {
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
               >
-                <span className="relative z-10 text-white">View Work</span>
+                <span className="relative z-10 text-white">Vezi portofoliul</span>
                 <ArrowRight className="text-white ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform relative z-10" />
               </Button>
               <Button
@@ -80,28 +80,28 @@ export default function HeroSection() {
                 onClick={() => window.open("#", "_blank")}
               >
                 <Download className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform text-white" />
-                <span>Download CV</span>
+                <span>Descarcă CV</span>
               </Button>
             </div>
 
             {/* Desktop Additional Info */}
             <div className="mt-8 hidden sm:flex flex-col sm:flex-row gap-8 justify-center lg:justify-start bg-card/30 backdrop-blur-sm border border-border rounded-2xl px-8 py-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary">5+</div>
+                <div className="text-2xl font-bold text-primary">2+</div>
                 <div className="text-sm text-muted-foreground text-white">
                   Ani de experiență
                 </div>
               </div>
               <div className="w-px h-8 bg-border"></div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary">100+</div>
+                <div className="text-2xl font-bold text-primary">50+</div>
                 <div className="text-sm text-muted-foreground text-white">
                   Proiecte realizate
                 </div>
               </div>
               <div className="w-px h-8 bg-border"></div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary">50+</div>
+                <div className="text-2xl font-bold text-primary">25+</div>
                 <div className="text-sm text-muted-foreground text-white">
                   Clienți mulțumiți
                 </div>
@@ -162,7 +162,7 @@ export default function HeroSection() {
   }
   className="mt-4 w-full bg-transparent text-white border border-white font-medium py-2 px-4 rounded-xl transition-colors duration-300 hover:bg-blue-500 hover:text-white flex items-center justify-center gap-2"
 >
-  Let's Talk
+  Contactează-mă
   <ArrowRight className="h-4 w-4" />
 </Button>
 

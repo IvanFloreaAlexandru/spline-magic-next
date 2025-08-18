@@ -6,10 +6,10 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { name: "Home", icon: Home, href: "#home" },
-    { name: "About me", icon: User, href: "#about" },
-    { name: "Services", icon: Wrench, href: "#services" },
-    { name: "Portfolio", icon: Briefcase, href: "#portfolio" },
+    { name: "Acasa", icon: Home, href: "#home" },
+    { name: "Despre", icon: User, href: "#about" },
+    { name: "Servicii", icon: Wrench, href: "#services" },
+    { name: "Portofoliu", icon: Briefcase, href: "#portfolio" },
     { name: "Educatie", icon: Pencil, href: "#education" },
     { name: "Contact", icon: Mail, href: "#contact" },
   ];

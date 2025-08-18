@@ -33,7 +33,7 @@ export default function AboutSection() {
     {
       icon: GraduationCap,
       title: "Educație & Obiective",
-      description: "Sunt student în anul III la Facultatea de Inginerie Electrică și Știința Calculatoarelor și îmi propun să mă implic în cât mai multe proiecte pentru a-mi dezvolta competențele, a depăși provocările și a-mi depăși propriile așteptări. Motivat de inovație și progres, îmi doresc să contribui activ în echipe și inițiative ce au un impact real."
+      description: "Sunt student în anul III la Facultatea de Inginerie Electrică și Știința Calculatoarelor și îmi propun să mă implic în cât mai multe proiecte pentru a-mi dezvolta competențele și a-mi depăși propriile așteptări. Motivat de inovație și progres, îmi doresc să contribui activ în echipe și inițiative ce au un impact real."
     }
   ];
 
@@ -88,10 +88,10 @@ export default function AboutSection() {
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary underline underline-offset-4 transition-colors duration-300">
+                    <h3 className="text-xl font-semibold text-foreground mb-1 group-hover:text-primary underline underline-offset-4 transition-colors duration-300">
                       {point.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground text-white">
+                    <p className="text-sm text-muted-foreground text-white indent-2">
                       {point.description}
                     </p>
                   </div>

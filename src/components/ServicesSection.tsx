@@ -19,45 +19,48 @@ export default function ServicesSection() {
   const formRef = useRef<HTMLDivElement>(null);
 
   const services = [
-    {
+      {
       id: 1,
-      icon: <Code className="w-8 h-8" />,
-      title: "Dezvoltare Web",
-      description: "Website-uri și aplicații web personalizate, realizate cu tehnologii moderne",
-      price: "Începând de la 1.200$",
-      features: ["Design Responsive", "Framework Modern", "Optimizare SEO", "Încărcare Rapidă"]
-    },
-    {
-      id: 2,
-      icon: <Palette className="w-8 h-8" />,
-      title: "Design UI/UX",
-      description: "Interfețe frumoase și intuitive care îmbunătățesc experiența utilizatorului",
-      price: "Începând de la 800$",
-      features: ["Cercetare Utilizatori", "Wireframing", "Prototipare", "Sistem de Design"]
-    },
-    {
-      id: 3,
       icon: <Globe className="w-8 h-8" />,
       title: "Soluții E-commerce",
       description: "Magazine online complete cu integrare plăți și gestionare stocuri",
-      price: "Începând de la 2.000$",
+      price: "Începând de la 400$",
       features: ["Gateway de Plăți", "Sistem de Inventar", "Panou Administrativ", "Analize și Statistici"]
     },
+
+
     {
-      id: 4,
+      id: 2,
+      icon: <Code className="w-8 h-8" />,
+      title: "Dezvoltare Web",
+      description: "Website-uri și aplicații web personalizate, realizate cu tehnologii moderne",
+      price: "Începând de la 150$",
+      features: ["Design adaptabil", "Framework Modern", "Securizare", "Încărcare Rapidă"]
+    },
+    {
+      id: 3,
       icon: <Database className="w-8 h-8" />,
       title: "Dezvoltare Backend",
       description: "API-uri robuste și soluții server-side pentru aplicațiile tale",
-      price: "Începând de la 1.500$",
+      price: "Începând de la 150$",
       features: ["REST API-uri", "Design Baze de Date", "Autentificare", "Hosting în Cloud"]
     },
     {
-      id: 5,
+      id: 4,
       icon: <Zap className="w-8 h-8" />,
       title: "Optimizare Performanță",
       description: "Crește viteza website-urilor și aplicațiilor existente",
-      price: "Începând de la 600$",
-      features: ["Analiză Viteză", "Optimizare Cod", "Îmbunătățire SEO", "Monitorizare Performanță"]
+      price: "Începând de la 100$",
+      features: ["Analiză Viteză", "Îmbunătățire SEO", "Monitorizare Performanță"]
+    },
+    
+    {
+      id: 5,
+      icon: <Palette className="w-8 h-8" />,
+      title: "Design UI/UX",
+      description: "Interfețe frumoase și intuitive care îmbunătățesc experiența utilizatorului",
+      price: "Începând de la 100$",
+      features: ["Interfață intuitivă", "Testare UX", "Design adaptabil"]
     }
   ];
 
@@ -170,7 +173,7 @@ export default function ServicesSection() {
             <h2 className="text-4xl sm:text-5xl font-bold mb-4">Servicii oferite</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto mb-6"></div>
             <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-              Ofer soluții digitale complete pentru a transforma ideile tale în realitate, folosind tehnologie de ultimă generație și design modern.
+              Ofer soluții digitale complete pentru a transforma ideile tale în realitate, folosind tehnologii de ultimă generație și design modern.
             </p>
           </div>
 
