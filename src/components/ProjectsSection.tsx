@@ -456,9 +456,9 @@ export default function ServicesSection() {
       {/* Error Popup */}
       {showErrorPopup && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-[60]">
-          <div className="bg-gray-900 rounded-2xl shadow-2xl w-full max-w-md border border-red-500/30 relative overflow-hidden">
+          <div className="bg-gray-900 rounded-2xl shadow-2xl w-full max-w-md border border-blue-500/30 relative overflow-hidden">
             {/* Error gradient background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-transparent to-red-400/5"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-blue-400/5"></div>
             
             <div className="relative z-10 p-8 text-center">
               {/* Error Icon */}
@@ -475,7 +475,7 @@ export default function ServicesSection() {
               {/* Close button */}
               <Button
                 onClick={() => setShowErrorPopup(false)}
-                className="bg-red-500 hover:bg-red-600 text-white px-8 py-2 rounded-lg transition-colors duration-200"
+                className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-2 rounded-lg transition-colors duration-200"
               >
                 Am înțeles
               </Button>
