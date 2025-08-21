@@ -32,7 +32,7 @@ export default function ServicesSection() {
       icon: <Code className="w-8 h-8" />,
       title: "Dezvoltare Web",
       description: "Website-uri și aplicații web personalizate, realizate cu tehnologii moderne",
-      price: "Începând de la 150$",
+      price: "Începând de la 200$",
       features: ["Design adaptabil", "Framework Modern", "Securizare", "Încărcare Rapidă"]
     },
     {
@@ -40,7 +40,7 @@ export default function ServicesSection() {
       icon: <Database className="w-8 h-8" />,
       title: "Dezvoltare Backend",
       description: "API-uri robuste și soluții server-side pentru aplicațiile tale",
-      price: "Începând de la 150$",
+      price: "Începând de la 200$",
       features: ["REST API-uri", "Design Baze de Date", "Autentificare", "Hosting în Cloud"]
     },
     {

@@ -9,7 +9,7 @@ export default function Navbar() {
     { name: "Acasa", icon: Home, href: "#home" },
     { name: "Despre", icon: User, href: "#about" },
     { name: "Servicii", icon: Wrench, href: "#services" },
-    { name: "Portofoliu", icon: Briefcase, href: "#portfolio" },
+    //{ name: "Portofoliu", icon: Briefcase, href: "#portfolio" },
     { name: "Educatie", icon: Pencil, href: "#education" },
     { name: "Contact", icon: Mail, href: "#contact" },
   ];
