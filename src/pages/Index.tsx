@@ -1,11 +1,11 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
-import ProjectsSection from "@/components/ProjectsSection";
 import PortfolioSection from "@/components/PortfolioSection";
 import EducationSection from "@/components/EducationSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import ServicesSection from "@/components/ServicesSection";
 
 const Index = () => {
   return (
@@ -18,7 +18,7 @@ const Index = () => {
         <Navbar />
         <HeroSection />
         <AboutSection />
-        <ProjectsSection />
+        <ServicesSection />
         <PortfolioSection />
         <EducationSection />
         <ContactSection />

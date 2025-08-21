@@ -19,48 +19,47 @@ export default function ServicesSection() {
   const formRef = useRef<HTMLDivElement>(null);
 
   const services = [
-  {
-    id: 1,
-    icon: <Globe className="w-8 h-8" />,
-    title: "Soluții E-commerce",
-    description: "Magazine online complete cu integrare plăți și gestionare stocuri",
-    price: "Începând de la 400$",
-    features: ["Gateway de Plăți", "Sistem de Inventar", "Panou Administrativ", "Analize și Statistici"]
-  },
-  {
-    id: 2,
-    icon: <Code className="w-8 h-8" />,
-    title: "Dezvoltare Web",
-    description: "Website-uri și aplicații web personalizate, realizate cu tehnologii moderne",
-    price: "Începând de la 150$",
-    features: ["Design adaptabil", "Framework Modern", "Securizare", "Încărcare Rapidă"]
-  },
-  {
-    id: 3,
-    icon: <Database className="w-8 h-8" />,
-    title: "Dezvoltare Backend",
-    description: "API-uri robuste și soluții server-side pentru aplicațiile tale",
-    price: "Începând de la 150$",
-    features: ["REST API-uri", "Design Baze de Date", "Autentificare", "Hosting în Cloud"]
-  },
-  {
-    id: 4,
-    icon: <Zap className="w-8 h-8" />,
-    title: "Optimizare Performanță",
-    description: "Crește viteza website-urilor și aplicațiilor existente",
-    price: "Începând de la 100$",
-    features: ["Analiză Viteză", "Îmbunătățire SEO", "Monitorizare Performanță"]
-  },
-  {
-    id: 5,
-    icon: <Palette className="w-8 h-8" />,
-    title: "Design UI/UX",
-    description: "Interfețe frumoase și intuitive care îmbunătățesc experiența utilizatorului",
-    price: "Începând de la 100$",
-    features: ["Interfață intuitivă", "Testare UX", "Design adaptabil"]
-  }
-];
-
+    {
+      id: 1,
+      icon: <Globe className="w-8 h-8" />,
+      title: "Soluții E-commerce",
+      description: "Magazine online complete cu integrare plăți și gestionare stocuri",
+      price: "Începând de la 400$",
+      features: ["Gateway de Plăți", "Sistem de Inventar", "Panou Administrativ", "Analize și Statistici"]
+    },
+    {
+      id: 2,
+      icon: <Code className="w-8 h-8" />,
+      title: "Dezvoltare Web",
+      description: "Website-uri și aplicații web personalizate, realizate cu tehnologii moderne",
+      price: "Începând de la 150$",
+      features: ["Design adaptabil", "Framework Modern", "Securizare", "Încărcare Rapidă"]
+    },
+    {
+      id: 3,
+      icon: <Database className="w-8 h-8" />,
+      title: "Dezvoltare Backend",
+      description: "API-uri robuste și soluții server-side pentru aplicațiile tale",
+      price: "Începând de la 150$",
+      features: ["REST API-uri", "Design Baze de Date", "Autentificare", "Hosting în Cloud"]
+    },
+    {
+      id: 4,
+      icon: <Zap className="w-8 h-8" />,
+      title: "Optimizare Performanță",
+      description: "Crește viteza website-urilor și aplicațiilor existente",
+      price: "Începând de la 100$",
+      features: ["Analiză Viteză", "Îmbunătățire SEO", "Monitorizare Performanță"]
+    },
+    {
+      id: 5,
+      icon: <Palette className="w-8 h-8" />,
+      title: "Design UI/UX",
+      description: "Interfețe frumoase și intuitive care îmbunătățesc experiența utilizatorului",
+      price: "Începând de la 100$",
+      features: ["Interfață intuitivă", "Testare UX", "Design adaptabil"]
+    }
+  ];
 
   const openContactModal = (serviceTitle, servicePrice = "") => {
     let message = "";
@@ -337,6 +336,44 @@ export default function ServicesSection() {
                 </Button>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Success Popup */}
+      {showSuccessPopup && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-6 max-w-md w-full mx-auto backdrop-blur-sm">
+            <div className="flex items-center space-x-3">
+              <CheckCircle className="w-6 h-6 text-green-400" />
+              <div>
+                <h4 className="text-green-400 font-semibold">Mesaj trimis cu succes!</h4>
+                <p className="text-green-300 text-sm mt-1">
+                  Îți voi răspunde în cel mai scurt timp posibil.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Error Popup */}
+      {showErrorPopup && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-6 max-w-md w-full mx-auto backdrop-blur-sm">
+            <div className="flex items-start space-x-3">
+              <AlertCircle className="w-6 h-6 text-red-400 mt-0.5" />
+              <div>
+                <h4 className="text-red-400 font-semibold">Eroare!</h4>
+                <p className="text-red-300 text-sm mt-1">{errorMessage}</p>
+              </div>
+            </div>
+            <button
+              onClick={() => setShowErrorPopup(false)}
+              className="mt-4 px-4 py-2 bg-red-500/20 text-red-300 rounded-lg hover:bg-red-500/30 transition-colors text-sm"
+            >
+              Închide
+            </button>
           </div>
         </div>
       )}
