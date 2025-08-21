@@ -15,12 +15,17 @@ const Index = () => {
 
       {/* Conținutul site-ului */}
       <div className="relative z-10">
-        <Navbar />
-        <HeroSection />
-        <AboutSection />
-        <ServicesSection />
-        <EducationSection />
-        <ContactSection />
+        <header>
+          <Navbar />
+        </header>
+        <main>
+          <HeroSection />
+          <AboutSection />
+          <ServicesSection />
+          <PortfolioSection />
+          <EducationSection />
+          <ContactSection />
+        </main>
         <Footer />
       </div>
     </>
